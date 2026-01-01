@@ -18,15 +18,14 @@ jobs:
           java-version: 17
 
       - name: Grant execute permission
-        run: chmod +x android/gradlew
+        run: chmod +x gradlew
 
       - name: Build APK
-        run: |
-          cd android
-          ./gradlew assembleDebug
+        run: ./gradlew assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: ChaosFPS-Android-APK
-          path: android/app/build/outputs/apk/debug/*.apk
+          path: |
+            **/build/outputs/apk/debug/*.apk
